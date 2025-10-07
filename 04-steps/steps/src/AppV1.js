@@ -46,50 +46,35 @@ function App() {
             </div>
           </div>
 
-          <StepMessage step={step}>{messages[step - 1]}</StepMessage>
+          <p className="message">
+            Step {step}: {messages[step - 1]}
+          </p>
 
           <div className="buttons">
-            <Button
-              textColor={"#FFF"}
-              backgroundColor={"#7950f2"}
+            <button
+              // disabled={step <= 1}
               onClick={handlePrevious}
+              style={{
+                backgroundColor: step <= 1 ? "#e7e7e7" : "#7950f2",
+                color: "#FFF",
+              }}
             >
-              <span>Previous</span>
-            </Button>
-            <Button
-              textColor={"#FFF"}
-              backgroundColor={"#7950f2"}
+              Previous
+            </button>
+            <button
+              // disabled={step >= 3}
               onClick={handleNext}
+              style={{
+                backgroundColor: step >= 3 ? "#e7e7e7" : "#7950f2",
+                color: "#FFF",
+              }}
             >
-              <span>Next</span>
-            </Button>
+              Next
+            </button>
           </div>
         </div>
       )}
     </>
-  );
-}
-
-function Button({ textColor, backgroundColor, onClick, children }) {
-  return (
-    <button
-      onClick={onClick}
-      style={{
-        backgroundColor: backgroundColor,
-        color: textColor,
-      }}
-    >
-      {children}
-    </button>
-  );
-}
-
-function StepMessage({ step, children }) {
-  return (
-    <div className="message">
-      <h3>Step {step}:</h3>
-      {children}
-    </div>
   );
 }
 
